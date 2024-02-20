@@ -6,16 +6,16 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
-import { BillboardColumn, columns } from "./columns";
+import { CategoryCollumn, columns } from "./columns";
 import { DataTable } from "@/components/ui/data-table";
 import { ApiList } from "@/components/ui/api-list";
 import { useCallback, useEffect } from "react";
 
-interface BillboardClientProps {
-  data: BillboardColumn[];
+interface CategoryClientProps {
+  data: CategoryCollumn[];
 }
 
-export const BillboardClient = ({ data }: BillboardClientProps) => {
+export const CategoryClient = ({ data }: CategoryClientProps) => {
   const router = useRouter();
   const params = useParams();
   //podemos passar qualquer valor após /${params.storeId}/billboards/qualquervaloraqui
@@ -24,21 +24,21 @@ export const BillboardClient = ({ data }: BillboardClientProps) => {
     <>
       <div className="flex items-center justify-between">
         <Heading
-          title={`Billboards (${data.length})`}
-          description="Manage billboards for your store"
+          title={`Categories (${data.length})`}
+          description="Manage categories for your store"
         />
         <Button
-          onClick={() => router.push(`/${params.storeId}/billboards/new`)}
+          onClick={() => router.push(`/${params.storeId}/categories/new`)}
         >
           <Plus className="h4 w-4" />
           Add New
         </Button>
       </div>
       <Separator />
-      <DataTable searchKey="label" columns={columns} data={data} />
-      <Heading title="API" description="API calls for Billboards" />
+      <DataTable searchKey="name" columns={columns} data={data} />
+      <Heading title="API" description="API calls for Categories" />
       <Separator />
-      <ApiList entityName="billboards" entityIdName="billboardId" />
+      <ApiList entityName="categories" entityIdName="categoryId" />
     </>
   );
 };
