@@ -111,7 +111,7 @@ export const BillboardForm = ({ initialData }: BillboardFormProps) => {
             size="icon"
             onClick={() => setOpen(true)}
           >
-            <Trash className="w-4 h-4" />
+            <Trash className="size-4" />
           </Button>
         )}
       </div>
