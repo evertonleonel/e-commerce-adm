@@ -67,9 +67,9 @@ export const BillboardForm = ({ initialData }: BillboardFormProps) => {
       } else {
         await axios.post(`/api/${params.storeId}/billboards`, data);
       }
-      router.refresh();
       router.push(`/${params.storeId}/billboards`);
       toast.success(toastMessage);
+      router.refresh();
     } catch (error) {
       toast.error("Somenting went wrong.");
     } finally {
